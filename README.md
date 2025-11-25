@@ -1,1 +1,2 @@
 # Students-College-Scheduling-Problem-using-CSP
+For my Introduction to AI project I developed the backend of our college shceduling website. The backend developed a custom datastructure in order to implement CSP. The list of classes provided by the database needs to be formatted according to this datastructure to work. The CSP makes sures to eliminate timing conflicts and then gives preference to the teachers. Both of these are hard constraints. Days and timings are soft constraints.
