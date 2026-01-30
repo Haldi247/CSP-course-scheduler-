@@ -79,11 +79,6 @@ class ScheduleSolver:
                      all_cls[course].append(cl)
 
 
-        # for course in self.courses:
-        #     print(course)
-        #     for cl in all_cls[course]:
-        #          print(cl[0])
-
         for course in self.courses:
              for cl in all_cls[course]:
 
@@ -98,14 +93,7 @@ class ScheduleSolver:
                 
                 if "(Lab)" not in cl[0][0]:
                      all_theories[course].append(cl)
-      
-        # for course in self.courses:
-        #     print(course)
-        #     for lab in all_labs[course]:
-        #         print(lab[0])
-        #     for theory in all_theories[course]:
-        #          print(theory[0])
-
+   
         for course in self.courses:     # assigning domain to each variable
             for theory_class in all_theories[course]:
                 if course not in self.all_classes:
@@ -120,19 +108,7 @@ class ScheduleSolver:
                     
                 else:                       # if course doesn't have lab
                     self.all_classes[course].append((theory_class[0], None))  # form a tuple of theory class with none, and then putting it in a list of all possible classes of that course
-        # print()
-        # for course in self.courses:
-        #     print(course, ":")
-        #     print()
-        #     for cls in self.all_classes[course]:
-        #      print(cls[0])
-        #      print(cls[1])
-             
-
-        
-        # print("initial domain")
-        # print(self.all_classes)
-        # print("final domain")
+   
 
         self.CSP = csp.CSP(self.courses, self.all_classes)
 
@@ -258,17 +234,9 @@ class ScheduleSolver:
                 if course_1 != course_2:
                     self.CSP.add_constraint(course_1,course_2, self.avoid_clashes)
 
-        # for course in self.courses:
-        #     print(course)
-        #     for cls in self.all_classes[course]:
-        #         print(cls[0])
-        #         print(cls[1])
         
         self.reordering()
-        # if self.CSP.backtrack() == None:
-        #     for course in self.courses:
-        #         if self.teacher_priority[course]:
-        #             self.teacher_preference(course)
+  
         result = self.CSP.backtrack()
         return result
          
